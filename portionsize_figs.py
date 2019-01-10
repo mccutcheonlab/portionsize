@@ -33,6 +33,7 @@ def ps_myers_fig(df, keys):
                      barfacecoloroption = 'individual',
                      barfacecolor = colors,
                      barlabels = keys,
+                     xlim=[0.25,2.75],
                      ax=ax)
 #    ax.set_xlim([0.2,2.8])
     ax.set_ylabel('Food consumed (g)')
@@ -54,6 +55,7 @@ def ps_myers_figB(df, keys):
                      barfacecoloroption = 'individual',
                      barfacecolor = colors,
                      barlabels = keys,
+                     xlim=[0.25,3.75],
                      ax=ax)
 #    ax.set_xlim([0.2,2.8])
     ax.set_ylabel('Food consumed (g)')

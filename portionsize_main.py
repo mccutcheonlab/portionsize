@@ -24,8 +24,8 @@ import portionsize_figs as psfig
 
 usr = jmf.getuserhome()
 
-savefigs=False
-statson=False
+savefigs=True
+statson=True
 
 datafolder = usr + '\Dropbox\Publications in Progress\Pinder_portionsize\\'
 savefolder = usr + '\Dropbox\Publications in Progress\Pinder_portionsize\Figs\\'
