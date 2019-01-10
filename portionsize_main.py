@@ -24,8 +24,8 @@ import portionsize_figs as psfig
 
 usr = jmf.getuserhome()
 
-savefigs=True
-statson=True
+savefigs=False
+statson=False
 
 datafolder = usr + '\Dropbox\Publications in Progress\Pinder_portionsize\\'
 savefolder = usr + '\Dropbox\Publications in Progress\Pinder_portionsize\Figs\\'
@@ -35,26 +35,30 @@ myers_xlfile = datafolder + 'myers_data.xlsx'
 jmf.metafilemaker(myers_xlfile, 'myers1', sheetname='expt1')
 df = pd.read_csv('myers1.csv', index_col='rat')
 
-f = psfig.ps_myers_fig(df, ['small', 'large'])
+f = psfig.ps_myers_fig(df, ['Small', 'Large'])
 
 if savefigs: f.savefig(savefolder + 'myers_expt1.pdf')
 
 if statson:
     print('Paired t-test for Myers experiment # 1')
-    psfig.ps_ttest_paired(df, 'small', 'large')
+    psfig.ps_ttest_paired(df, 'Small', 'Large')
 
 
 jmf.metafilemaker(myers_xlfile, 'myers2', sheetname='expt2')
 df = pd.read_csv('myers2.csv', index_col='rat')
 
 
-f = psfig.ps_myers_fig(df, ['med', 'large'])
+f = psfig.ps_myers_fig(df, ['Medium', 'Large'])
 
 if savefigs: f.savefig(savefolder + 'myers_expt2.pdf')
 
+f = psfig.ps_myers_figB(df, ['Small', 'Medium', 'Large'])
+
+if savefigs: f.savefig(savefolder + 'myers_expt2B.pdf')
+
 if statson:
     print('Paired t-test for Myers experiment # 2')
-    psfig.ps_ttest_paired(df, 'med', 'large')
+    psfig.ps_ttest_paired(df, 'Medium', 'Large')
 
 mccutcheon_xlfile = datafolder + 'mccutcheon_data.xlsx'
 

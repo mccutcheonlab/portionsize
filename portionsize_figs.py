@@ -7,6 +7,7 @@ Created on Thu Nov 15 10:27:29 2018
 import JM_general_functions as jmf
 import JM_custom_figs as jmfig
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 from scipy import stats
 
@@ -14,13 +15,38 @@ from subprocess import PIPE, run
 
 Rscriptpath = 'C:\\Program Files\\R\\R-3.5.1\\bin\\Rscript'
 
+mpl.rcParams['savefig.transparent'] = True
+
+color_scheme = ['xkcd:light grey', 'xkcd:baby blue', 'xkcd:azure']
+
 def ps_myers_fig(df, keys):
     data = [df[keys[0]], df[keys[1]]]
     
     f, ax = plt.subplots(figsize=(3,3))
     f.subplots_adjust(left=0.2)
     
-    colors = ['xkcd:light green', 'xkcd:kelly green']
+    colors = [color_scheme[1], color_scheme[2]]
+    
+    jmfig.barscatter(data,
+                     paired=True,
+                     barwidth = .7,
+                     barfacecoloroption = 'individual',
+                     barfacecolor = colors,
+                     barlabels = keys,
+                     ax=ax)
+#    ax.set_xlim([0.2,2.8])
+    ax.set_ylabel('Food consumed (g)')
+    ax.set_yticks([0,10,20,30])
+    
+    return f
+
+def ps_myers_figB(df, keys):
+    data = [df[keys[0]], df[keys[1]], df[keys[2]]]
+    
+    f, ax = plt.subplots(figsize=(3,3))
+    f.subplots_adjust(left=0.2)
+    
+    colors = color_scheme
     
     jmfig.barscatter(data,
                      paired=True,
@@ -42,11 +68,9 @@ def ps_mcc1_fig(df, keys):
     
     f, ax = plt.subplots(figsize=(5,3))
     f.subplots_adjust(left=0.1, bottom=0.2)
-    
-    color1 = ['grey']    
-    color2 = ['xkcd:kelly green']
 
-    colors = color1*2 + color2*5
+    colors = [color_scheme[0]]*2 + [color_scheme[2]]*5
+    print(colors)
     
     jmfig.barscatter(data,
                      paired=True,
@@ -71,7 +95,7 @@ def ps_mcc2_fig(df, keys):
     f, ax = plt.subplots(figsize=(3, 3))
     f.subplots_adjust(left=0.2, bottom=0.2)
 
-    colors = ['xkcd:kelly green']*4
+    colors = [color_scheme[2]]*4
     
     jmfig.barscatter(data,
                      paired=True,
@@ -96,7 +120,7 @@ def ps_mcc3_fig(df, keys):
     f, ax = plt.subplots(figsize=(3,3))
     f.subplots_adjust(left=0.2, bottom=0.2)
 
-    colors = ['xkcd:kelly green']*4
+    colors = [color_scheme[2]]*4
     
     jmfig.barscatter(data,
                      paired=True,
